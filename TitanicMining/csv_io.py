@@ -4,16 +4,13 @@ Created on Nov 9, 2012
 @author: Ash
 '''
 
-def read_data(file_name):
+def read_data(file_name, header):
     f = open(file_name)
-    # ignore header
-    f.readline()
+    if header: f.readline()  # ignore header
     samples = []
-    target = []
     for line in f:
         line = line.strip().split(",")
-        sample = [float(x) for x in line]
-        samples.append(sample)
+        samples.append(line)
     return samples
 
 def write_delimited_file(file_path, data, header=None, delimiter=","):
